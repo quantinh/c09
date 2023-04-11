@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Bài json kiểu object</title>
+		<script type="text/javascript">
+			// Cách 1
+			var myObject = {};
+			
+			// Cách 2
+			var myObject = new Object();
+			
+			var myObject = {
+				//Các thuộc tính của một đối tượng object
+				'id'	: 1,
+				'name'	: 'PHP Programming',
+				'url'	: 'http:www.academy.vn/khoa-hoc-truc-tuyen/php'
+			};
+			
+			//Tạo biến truyền dữ liệu dạng biến nhưng có giá trị là object vào và dùng hàm typeof kiểm tra xem biến đó thuộc kiểu dữ liệu nào
+			var type_of = typeof(myObject);
+			
+			//Xuất ra console kiểu dữ liệu thuộc kiểu nào
+			console.log(type_of);
+			
+			//Xuất ra kiểu dữ liệu ra console
+			console.log(myObject);
+
+			//Xuất ra kiều dữ liệu dùng dấu + để nối, sau đó vào đối tượng object dấu . là thể hiện vào thuộc tính id 
+			console.log('ID: ' + myObject.id);
+			console.log('Name: ' + myObject.name);
+			console.log('URL: ' + myObject.url);
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>

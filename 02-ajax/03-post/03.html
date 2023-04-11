@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>AJAX POST</title>
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$('#process').click(function() {
+				// Tạo đường dẫn đến file xử lý
+				var url = 'files/03.php?t=' + Math.random();
+				// Tạo dữ liệu gửi đi
+				var dataSend = {
+						// Lấy giá trị của các input username và password
+							'username' : $('#login-form [name="username"]').val(),
+							'password' : $('#login-form [name="password"]').val(),
+						};
+				// Gửi dữ liệu đi và nhận dữ liệu về
+				$.post(url, dataSend, function(data, status) {
+					// Nếu trạng thái là success thì xử lý
+					if(status == 'success') {
+						// Truy xuất vào thẻ form xóa phần tử có class txtError và xóa class input-error (là border đỏ của ô input)
+						$('#login-form *').remove('.txtError').removeClass('input-error');
+						// Nếu dữ liệu nhận về trỏ vào status là error thì hiển thị lỗi
+						if(data.status == 'error') {
+							// Thì truy cập vào phần tử có id là content-load và thêm class error và chèn cập nhập text là hiển thị nội dung lỗi
+							$('#content-load').addClass('error').text('Có lối xảy ra');
+							// duyệt qua các phần tử trong mảng message
+							$.each(data.message, function(i, value) {
+								// Tạo biến truy xuất vào phần tử có id là login-form và tên là username và password
+								var element = '#login-form [name="'+i+'"]';
+								// Thêm class vào sau đó chèn cập nhập text là hiển thị nội dung lỗi với giá trị lặp là value
+								$(element).addClass('input-error').after('<span class="txtError">'+value+'</span>');
+								console.log(data);
+							});
+						// Ngược lại nếu không có lỗi thì xóa class error và thêm class success và chèn cập nhập text là hiển thị nội dung thành công
+						} else {
+							$('#content-load').removeClass('error').addClass('success').text('Đăng nhập thành công');
+							// Đồng thời xóa phần tử form
+							$('#login-form').remove();
+						}
+					}
+				}, 'json');
+			});
+		});
+	</script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div class="title">Ajax - POST</div>
+			<div class="list">
+				<div id="content-load">Response (kết quả trả về)</div>
+				<form action="#" method="post" name="login-form" id="login-form">
+					<div class="row">
+						<label>Username</label>
+						<input type="text" name="username" value="">
+					</div>
+					<div class="row">
+						<label>Password</label>
+						<input type="password" name="password" value="">
+					</div>
+					<div class="row">
+						<input type="button" class="button" name="process" id="process" value="Submit">
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

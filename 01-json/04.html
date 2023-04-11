@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+			//Mảng danh sách các khóa học chứa phần tử là đối tượng
+			var myCourse = [
+						//Phần tử thuộc kiểu đối tượng
+						{ 'id'	: 2, 'name'	: 'Zend Framework'}, 
+						{ 'id'	: 3, 'name'	: 'Jquery Master' }, 
+						{ 'id'	: 4, 'name'	: 'Jooma' }
+				];
+			//In ra các phần tử của mảng khóa học
+			//In thông tin tên của khóa học có id = 2
+			console.log(myCourse);
+			//In ra phần tử có chỉ số thứ 1 và lấy ra giá trị của thuộc tính 'name' = 'Jquery Master'
+			console.log(myCourse[1].name);
+			
+			//ID: 2 - Name: Joomla
+			var i = 0;
+			//Chạy vòng lặp duyệt qua và in ra 
+			for(i; i< myCourse.length; i++) {
+				//In ra từ chỉ số đầu  tiên 0 và lấy ra giá trị của thuộc tính id = 2 nối chuỗi từ chỉ số và lấy ra giá trị của tên
+				console.log('ID: ' + myCourse[i].id + ' - Name: ' + myCourse[i].name);
+			}
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>

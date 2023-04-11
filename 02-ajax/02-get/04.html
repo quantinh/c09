@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>AJAX</title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// Tạo biến key và gán giá trị là 2
+			var key = 2;
+			var url = 'files/course.php';
+			// chỗ này giá trị của key là = 2
+			var dataSend = {'key' : key};
+			$('#process').click(function() {
+				$.get(url, dataSend, function(data, status) {
+					// chuyển về dạng json nguyên bản để hiển thị ra màn hình
+					var result = $.parseJSON(data);
+					console.log(result);
+					// Truy vấn vào div có id là content hiển thị id và name ra 
+					$('#content').html(result.id + ' - ' + result.name);
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<div class="title">Ajax - Load</div>
+		<div class="list">  
+			<h3>jQuery.get (url [,data] [,success(data, textStatus)[, dataType]])</h3>
+			<input type="button" class="button" name="process" id="process" value ="Process"/>
+			<div id="content">Hello</div>
+		</div>
+	</div>
+</body>
+</html>

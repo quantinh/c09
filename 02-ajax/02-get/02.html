@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>AJAX</title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript">
+		// Sử dụng thư viện jquery để gọi ajax
+		$(document).ready(function() {
+			// Đường dẫn đến file xử lý
+			var url = 'files/01.php';
+			// Dữ liệu gửi lên file xử lý
+			var dataSend = {'id' : 23, 'name' : 'PHP Programming', 't' : Math.random()};
+			// Sự kiện click vào nút process
+			$('#process').click(function() {
+				// Sử dụng phương thức get của jquery để gửi dữ liệu tới file xử lý url
+				$.get(url, dataSend, function(data, status) {
+					console.log(status);
+					console.log(data);
+					// Hiển thị dữ liệu nội dung của file .php lên thẻ div content
+					$('#content').html(data);
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<div class="title">Ajax - Load</div>
+		<div class="list">  
+			<h3>jQuery.get (url [,data] [,success(data, textStatus)[, dataType]])</h3>
+			<input type="button" class="button" name="process" id="process" value ="Process"/>
+			<div id="content">Hello</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Json duyệt mảng để in ra các giá trị or phần tử</title>
+		<script type="text/javascript">
+			//Tạo mảng với các phần tử
+			var myArray = ['Zend', 'Jquery', 'Joomla'];
+			
+			//Duyệt mảng và in ra kiểu 1
+			var i = 0;
+			for(i; i < myArray.length; i++){
+				console.log(myArray[i]);
+			}
+			
+			//Duyệt mảng và in ra kiểu 2
+			//X là chỉ số trong mảng và in ra tăng dần 
+			for(x in myArray){
+				//In ra chỉ sổ của mảng
+				console.log(x);
+				//Từ chỉ số in ra giá trị theo chỉ số  
+				console.log(myArray[x]);
+			}
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
